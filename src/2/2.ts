@@ -91,3 +91,37 @@ interface aabc {
 class ArrayList implements aabc {
   add() {}
 }
+
+// 可索引签名
+const syMid = Symbol("product");
+interface Product {
+  [syMid]?: number;
+  name: string;
+  price: number;
+  [x: string]: any; //string 可以支持任何格式   但是number 不行
+}
+let p: Product = {
+  name: "string",
+  price: 2,
+  1: 4,
+};
+
+// 接口访问类型一样可以合并
+interface Product {}
+
+type aabut = Product["name" | "price"];
+type ssA = Product[typeof syMid];
+
+type cad<T> = T extends any ? T : never;
+type keys = cad<keyof Product>;
+
+let obj321 = { username: "11", age: 23 };
+const username = "4444";
+
+let u = obj321["username"];
+
+// function info(name: string, age: number) {
+//   console.log("name :>>> ", name); //xs
+//   return 3;
+// }
+// info("11", 3);
