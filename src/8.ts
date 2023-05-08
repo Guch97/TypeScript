@@ -80,3 +80,32 @@ function cross<T extends object, U extends object>(t: T, u: U): T & U {
   for (let key in u) (comibe as any)[key] = u[key];
   return comibe;
 }
+
+function mergeObjects<T extends object, U extends object>(
+  obj1: T,
+  obj2: U
+): T & U {
+  return { ...obj1, ...obj2 } as T & U;
+}
+let Person3 = {
+  name: 1,
+  age: "2",
+};
+let Person4 = {
+  department: "1",
+  id: "2",
+};
+
+let aaabcd = cross(Person3, Person4);
+let aaabcd1 = mergeObjects(Person3, Person4);
+
+interface Person2 {
+  name: string;
+  age: number;
+}
+
+interface Employee extends Person2 {
+  id: number;
+  department: string;
+}
+let abcd: Employee = {};
