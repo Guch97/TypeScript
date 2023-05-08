@@ -48,6 +48,7 @@ type test2 = TestTemplate<"menu", "setActiveIndex" | "setCollsapce">;
 type StringProps<T> = {
   [K in keyof T]: Extract<T[K], string>;
 };
+type adbctestd = StringProps<Customer>;
 // Exclude
 // type Exclude<T, U> = T extends U ? never : T;
 
