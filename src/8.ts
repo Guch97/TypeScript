@@ -52,4 +52,31 @@ function print<T>(arg: T): T {
   return arg;
 }
 
-// 泛型函数 和 重载结合使用
+// 工程模式
+
+class CoomercialBack {
+  public address: string = "1";
+  public name: string = "wo";
+  static count: number = 18;
+  constructor(name: string, address: string) {
+    this.name = name;
+    this.address = address;
+  }
+  loan(): void {}
+}
+type CoomercialBacktype = new (...args: any) => CoomercialBack;
+
+// 交叉类型
+
+type o1 = { a: string };
+type o2 = { b: string };
+type o3 = o1 & o2;
+type o4 = string & number;
+
+// 通用交叉方法
+function cross<T extends object, U extends object>(t: T, u: U): T & U {
+  const comibe = {} as T & U;
+  for (let key in t) (comibe as any)[key] = t[key];
+  for (let key in u) (comibe as any)[key] = u[key];
+  return comibe;
+}
